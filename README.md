@@ -1,66 +1,250 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Sanctum Post App
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+![Laravel Logo](https://cdn.worldvectorlogo.com/logos/laravel-2.svg)
 
-## About Laravel
+## Project Description
+Sanctum Post App is a simple project created to store learning outcomes using **Laravel Sanctum** and serves as a personal guide for future projects related to authentication.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+### Project Goals:
+- Provide a guide for authentication using Laravel Sanctum.
+- Offer features such as **Register**, **Login**, **Logout**, and **CRUD Post**.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### Problems Addressed:
+- Currently, there are no specific issues to solve other than completing unfinished features.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### Key Features:
+- **User Authentication**
+  - Register
+  - Login
+  - Logout
+- **CRUD Post**
+  - Create Post
+  - Read Post
+  - Update Post
+  - Delete Post
 
-## Learning Laravel
+---
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Prerequisites
+Before installing and running this project, ensure you have the following software installed:
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+- **PHP**: Version 8.3.9 or newer.
+- **Composer**: For managing Laravel dependencies.
+- **PostgreSQL**: The database used.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Additional Configuration:
+- Set up the **.env** configuration file to match your local database setup.
 
-## Laravel Sponsors
+This project **does not require any external services** or other special configurations beyond the above.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+---
 
-### Premium Partners
+## Installation Instructions
+Follow the steps below to install and run the project in a local environment:
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+1. **Clone the repository**:
+   ```bash
+   git clone <repository-url>
+   cd sanctum-post-app
+   ```
 
-## Contributing
+2. **Install dependencies using Composer**:
+   ```bash
+   composer install
+   ```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+3. **Prepare the .env file**:
+   - Duplicate the `.env.example` file as `.env`.
+   - Set up the database connection to match your PostgreSQL setup:
+     ```dotenv
+     DB_CONNECTION=pgsql
+     DB_HOST=127.0.0.1
+     DB_PORT=5432
+     DB_DATABASE=your_database_name
+     DB_USERNAME=your_database_user
+     DB_PASSWORD=your_database_password
+     ```
 
-## Code of Conduct
+4. **Run database migrations**:
+   ```bash
+   php artisan migrate
+   ```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+5. **Start the application server**:
+   ```bash
+   php artisan serve
+   ```
 
-## Security Vulnerabilities
+6. **Test the application**:
+   Use Postman or any API testing tool to access:
+   ```
+   http://127.0.0.1:8000/api/test
+   ```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+---
+
+## Application Usage
+### Running the Application
+The application can be accessed using Postman or any other API client.
+
+### API Endpoint URLs
+Below are the available API endpoints:
+
+1. **CSRF Cookie**
+   - Method: `GET`
+   - URL: `http://localhost:8000/sanctum/csrf-cookie`
+
+2. **Decrypt CSRF Cookie**
+   - Method: `GET`
+   - URL: `http://localhost:8000/api/decrypt`
+   - Header:
+     - `X-XSRF-TOKEN`: `<token>`
+
+3. **Authentication**
+   - **Register**
+     - Method: `POST`
+     - URL: `http://localhost:8000/api/register`
+     - Header:
+       - `Accept`: `application/json`
+       - `X-XSRF-TOKEN`: `<token>`
+     - Body:
+       ```json
+       {
+         "name": "Dzulkifli Anwar",
+         "email": "dzul@gmail.com",
+         "password": "123456"
+       }
+       ```
+   - **Login**
+     - Method: `POST`
+     - URL: `http://localhost:8000/api/login`
+     - Header:
+       - `Accept`: `application/json`
+       - `X-XSRF-TOKEN`: `<token>`
+     - Body:
+       ```json
+       {
+         "email": "dzul@gmail.com",
+         "password": "123456"
+       }
+       ```
+   - **Profile**
+     - Method: `GET`
+     - URL: `http://localhost:8000/api/profile`
+     - Header:
+       - `Authorization`: `Bearer <token>`
+   - **Logout**
+     - Method: `POST`
+     - URL: `http://localhost:8000/api/logout`
+     - Header:
+       - `X-XSRF-TOKEN`: `<token>`
+       - `Authorization`: `Bearer <token>`
+
+4. **CRUD Post**
+   - **Create Post**
+     - Method: `POST`
+     - URL: `http://localhost:8000/api/post/`
+     - Header:
+       - `Accept`: `application/json`
+       - `X-XSRF-TOKEN`: `<token>`
+       - `Authorization`: `Bearer <token>`
+     - Body:
+       ```json
+       {
+         "title": "Title 1",
+         "body": "Body 1",
+         "user_id": 1
+       }
+       ```
+   - **Read Posts**
+     - Method: `GET`
+     - URL: `http://localhost:8000/api/post/`
+     - Header:
+       - `Authorization`: `Bearer <token>`
+   - **Update Post**
+     - Method: `PUT`
+     - URL: `http://localhost:8000/api/post/{id}`
+     - Header:
+       - `Accept`: `application/json`
+       - `X-XSRF-TOKEN`: `<token>`
+       - `Authorization`: `Bearer <token>`
+     - Body:
+       ```json
+       {
+         "title": "Title 1",
+         "body": "Body 1",
+         "user_id": 1
+       }
+       ```
+   - **Delete Post**
+     - Method: `DELETE`
+     - URL: `http://localhost:8000/api/post/{id}`
+     - Header:
+       - `X-XSRF-TOKEN`: `<token>`
+       - `Authorization`: `Bearer <token>`
+
+---
+
+## Project Structure
+The project directory structure follows the standard Laravel layout with additional **interface** and **service** folders under `app`:
+
+```
+app/
+├── Http/
+│   ├── Controllers/
+│   │   └── Api/
+│   │       ├── AuthController.php
+│   │       └── PostController.php
+│   └── Resources/
+│       ├── PostResource.php
+│       └── UserResource.php
+├── Interfaces/
+│   ├── AuthControllerInterface.php
+│   ├── AuthServiceInterface.php
+│   ├── PostControllerInterface.php
+│   └── PostServiceInterface.php
+├── Services/
+│   ├── AuthService.php
+│   └── PostService.php
+...
+```
+
+---
+
+## Contributions
+Contributions are welcome! However, the contribution guidelines are not yet ready and will be provided in the future. Please stay tuned for updates.
+
+---
 
 ## License
+This project is licensed under the **MIT License**. Please refer to the license file for more information.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+---
+
+## Testing
+Testing for this project is conducted manually using Postman or other API testing tools.
+
+---
+
+## Known Issues
+- **Unfinished Features**:
+  - Edit user profile.
+- No other known issues or bugs at this time.
+
+---
+
+## Contact and Support
+If you encounter any issues or have questions about this project, feel free to contact:
+
+- **Name**: Dzulkifli Anwar
+- **Email**: [ad875.darkroom373@passinbox.com](mailto:ad875.darkroom373@passinbox.com)
+- **Telegram**: [@dzul_578](https://t.me/dzul_578)
+
+---
+
+## References
+This project is based on a YouTube learning playlist with code adjustments:
+- [Learn Laravel Sanctum](https://www.youtube.com/playlist?list=PLaVebpbEIP3bbdPv_67BzjiYpiHWJyv9E)
+
+---
+
