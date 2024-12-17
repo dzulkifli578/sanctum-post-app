@@ -9,7 +9,12 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
+
 Route::middleware('api')->group(function () {
+    Route::get('/test', function () {
+        return response()->json(['message' => 'Hello, world!']);
+    });
+
     Route::post('/login', [AuthController::class, 'login'])->name('login');
     Route::post('/register', [AuthController::class, 'register'])->name('register');
 
